@@ -17,7 +17,6 @@ const LeftSidebar = () => {
           const isActive =
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
-          console.log(isActive, "isActive");
           return (
             <Link
               key={link.route}
