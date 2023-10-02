@@ -22,7 +22,6 @@ import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/context/ThemeProvider";
-import { ITag } from "@/database/tag.model";
 
 interface QuestionProps {
   mongoUserId: string;
@@ -39,7 +38,7 @@ const Question = ({ mongoUserId, questionDetails, type }: QuestionProps) => {
 
   const parsedQuestionDetails =
     questionDetails && JSON.parse(questionDetails || "");
-  const groupedTags = parsedQuestionDetails?.tags.map((tag) => tag.name);
+  const groupedTags = parsedQuestionDetails?.tags.map((tag: any) => tag.name);
 
   const form = useForm<z.z.infer<typeof questionsSchema>>({
     resolver: zodResolver(questionsSchema),
